@@ -8,7 +8,7 @@ I built this project to get hands-on experience with vector embeddings and seman
 
 The core idea: instead of asking a language model to answer from memory, you retrieve the most relevant chunks of a document first, then pass only that context to the model. This grounds the answer in your actual data and significantly reduces hallucination.
 
-I ran into real tradeoffs during the build. My original chunk size and overlap directly affected retrieval quality, with the model struggling to answer basic questions (i.e. "Where was the telescope launched from and what was it's stated purpose") and I had to tune both based on observed failures. I also learned why the precision/recall framing applies to vector search the same way it does to traditional IR.
+I ran into real tradeoffs during the build. My original chunk size and overlap directly affected retrieval quality, with the model struggling to answer basic questions (i.e. "Where was the telescope launched from and what was it's stated purpose") and I had to tune both based on observed failures. I also learned that vector search has the same basic retrieval tradeoffs as classic keyword search: better recall can introduce noise, while better precision can miss useful context.
 
 ## Tech Stack
 
@@ -153,7 +153,7 @@ rag-demo/
 ├── ingest.py           # PDF → chunks → embeddings → Pinecone
 ├── query.py            # Question → Pinecone → GPT → answer
 ├── app.py              # FastAPI wrapper around query.py
-├── clear_index.py      # A simple way to clear all vectors in Pinecone, useful for re-ingesting files
+├── clear_index.py      # Utility to clear all vectors in Pinecone, useful for re-ingesting files
 ├── requirements.txt
 └── .env                # API keys
 ```
