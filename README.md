@@ -1,4 +1,4 @@
-# RAG Demo
+# RAG Document Q&A System
 
 A document Q&A system that lets you ask natural language questions over any PDF and get accurate, grounded answers. Built to understand how vector databases and retrieval-augmented generation work in practice.
 
